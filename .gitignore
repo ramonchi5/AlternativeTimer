@@ -1,0 +1,26 @@
+# IDE options/cache directories
+.vs/
+.vscode/
+.idea/
+.fleet/
+
+# Build artifacts
+.dotnet/
+artifacts/
+bin/
+obj/
+publish/
+
+# User-specific files
+*.user
+
+# MSBuild
+*.binlog
+
+# Operating System Files
+# =========================
+
+# OSX
+.DS_Store
+.AppleDouble
+.LSOverride

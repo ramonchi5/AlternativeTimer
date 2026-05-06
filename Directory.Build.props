@@ -1,0 +1,27 @@
+<Project>
+
+  <!-- Imports `Directory.Build.props` from the above directory, if it exists. -->
+  <!-- If it does not, the properties `LsSrcPath`, `LsLibPath`, and `ComponentsPath` must be provided via the command line. -->
+  <!-- Example: `dotnet build -p:LsSrcPath=path/to/LiveSplit/src` -->
+
+  <PropertyGroup>
+    <ParentDirectoryBuildProps>$([MSBuild]::GetPathOfFileAbove(Directory.Build.props, $(MSBuildThisFileDirectory)..))</ParentDirectoryBuildProps>
+  </PropertyGroup>
+
+  <Import Project="$(ParentDirectoryBuildProps)" Condition="'$(ParentDirectoryBuildProps)' != ''" />
+
+  <PropertyGroup Condition="'$(LsSrcPath)' == ''">
+    <LsSrcPath>$(MSBuildThisFileDirectory)..\LiveSplit\src</LsSrcPath>
+    <LsLibPath>$(MSBuildThisFileDirectory)..\LiveSplit\lib</LsLibPath>
+    <ComponentsPath>$(MSBuildThisFileDirectory)..</ComponentsPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <CopyToLiveSplitArtifacts Condition="'$(CopyToLiveSplitArtifacts)' == ''">false</CopyToLiveSplitArtifacts>
+    <LiveSplitRepoPath Condition="'$(LiveSplitRepoPath)' == ''">$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\LiveSplit\'))</LiveSplitRepoPath>
+    <LiveSplitArtifactsConfiguration Condition="'$(LiveSplitArtifactsConfiguration)' == ''">$([System.String]::Copy('$(Configuration)').ToLowerInvariant())</LiveSplitArtifactsConfiguration>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)props\*.props" />
+
+</Project>

@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>LiveSplit</RootNamespace>
+    <AssemblyName>LiveSplit.AlternativeTimer</AssemblyName>
+    <UseWindowsForms>true</UseWindowsForms>
+    <TargetFramework>net481</TargetFramework>
+    <Version>1.0.0</Version>
+    <Title>Alternative Timer</Title>
+    <Authors>Ramonchi</Authors>
+    <RepositoryUrl>https://github.com/ramonchi5/AlternativeTimer</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Copyright>(c) 2026 Alternative Timer contributors, MIT licensed</Copyright>
+    <Description>Subsplit-aware timer, subsplits must begin with a certain format for their number it to be displayed on the current segment name (check README), designed to be used in while also using the Split Detail, but works on its own</Description>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="CustomFontDialog">
+      <HintPath>..\..\packages\CustomFontDialog.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="LiveSplit.Core">
+      <HintPath>..\..\packages\LiveSplit.Core.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="LiveSplit.Timer">
+      <HintPath>..\..\packages\LiveSplit.Timer.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="SpeedrunComSharp">
+      <HintPath>..\..\packages\SpeedrunComSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UpdateManager">
+      <HintPath>..\..\packages\UpdateManager.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="WinFormsColor">
+      <HintPath>..\..\packages\WinFormsColor.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+
+</Project>

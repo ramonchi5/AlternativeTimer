@@ -1,0 +1,29 @@
+name: build
+
+on:
+  pull_request:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  build:
+    name: build
+    runs-on: windows-latest
+    steps:
+      - name: Checkout Alternative Timer
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+
+      - name: Build
+        run: dotnet build .\LiveSplit.AlternativeTimer.sln -c Release -p:CopyToLiveSplitArtifacts=false
+
+      - name: Publish DLL
+        uses: actions/upload-artifact@v4
+        with:
+          name: LiveSplit.AlternativeTimer
+          path: src\LiveSplit.AlternativeTimer\bin\Release\net481\LiveSplit.AlternativeTimer.dll
